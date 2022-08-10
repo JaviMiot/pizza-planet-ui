@@ -17,7 +17,7 @@
     />
     <link rel="stylesheet" href="/css/styles.css" />
 
-    <title>L'ultima Cena Pizzeria! - Sizes</title>
+    <title>L'ultima Cena Pizzeria! - Report</title>
   </head>
 
   <body>
@@ -64,49 +64,39 @@
     </header>
 
     <!-- TABLE -->
-
     <div class="container">
       <div class="jumbotron">
-        <div id="sizes-list">
-          <h2 class="text-center">Sizes</h2>
-          <table id="sizes" class="table bg-white table-bordered table-hover">
-            <thead class="thead-dark">
-              <tr class="d-flex">
-                <th class="col-2 text-center">ID</th>
-                <th class="col-4 text-center">Name</th>
-                <th class="col-3 text-center">Price</th>
-                <th class="col-3 text-center">Actions</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-
-        <div class="text-center">
-          <a
-            class="btn btn-warning btn-lg add-size"
-            href="/app/size/add-size.html"
-            >Add New Size</a
-          >
-        </div>
+        <div id="report"></div>
       </div>
     </div>
 
-    <template id="size-item-template">
-      <tr class="d-flex">
-        <td class="col-2 text-center">{{_id}}</td>
-        <td class="col-4">{{name}}</td>
-        <td class="col-3">${{price}}</td>
-        <td class="col-3 text-center">
-          <div class="text-center">
-            <a
-              class="btn btn-success btn-sm update-size disabled"
-              href="/app/size/update-size.html?_id={{_id}}"
-              >Update</a
-            >
-          </div>
-        </td>
-      </tr>
+    <template id="report-template">
+      <table class="table bg-white table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th class="w-30">Most Request Ingredient</th>
+            <th class="w-30">Month with more revenue</th>
+            <th class="w-30">Best customers</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <p id="ingredient">{{ingredient.name}} - {{ingredient.count}}</p>
+            </td>
+            <td id="month">
+              <p>{{month.month_number}} - ${{month.total}}</p>
+            </td>
+            <td id="customers">
+              <ol>
+                {{#customers}}
+                <li>-- {{dni}} - name: {{name}}</li>
+                {{/customers}}
+              </ol>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </template>
 
     <!-- Optional JavaScript -->
@@ -132,6 +122,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="/js/size/size.js"></script>
+    <script src="/js/report/report.js"></script>
   </body>
 </html>
